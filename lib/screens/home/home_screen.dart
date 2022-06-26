@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Icons.home_rounded,
                 size: 28,
               ),
-              label: "Transaction",
+              label: "Transactions",
             ),
             BottomNavigationBarItem(
               icon: Icon(
