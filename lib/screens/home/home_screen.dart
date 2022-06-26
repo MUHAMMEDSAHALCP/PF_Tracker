@@ -6,7 +6,7 @@ import 'package:money_management/screens/overview/overview_screen.dart';
 import 'package:money_management/screens/settings/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const routeName = "main screen ";
+  static const routeName = "main screens ";
 
   const HomeScreen({
     Key? key,
