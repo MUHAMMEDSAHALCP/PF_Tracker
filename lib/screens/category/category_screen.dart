@@ -7,8 +7,8 @@ import 'package:money_management/screens/category/expanse_category_screen.dart';
 import 'package:money_management/screens/category/income_categry_screen.dart';
 
 class CategoryScreen extends StatefulWidget {
+  
   const CategoryScreen({Key? key}) : super(key: key);
-
   @override
   State<CategoryScreen> createState() => _CategoryScreenState();
 }
