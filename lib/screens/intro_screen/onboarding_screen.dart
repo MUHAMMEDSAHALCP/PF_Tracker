@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:money_management/components/elevatedbutton.dart';
+import 'package:money_management/components/navigatior_push.dart';
 import 'package:money_management/screens/intro_screen/Widget/build_page_widget.dart';
 import 'package:money_management/screens/intro_screen/widget/profile_name_screen.dart';
 
@@ -76,11 +77,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               buttonName: "Next")
                           : ReusableElevatedButton(
                               onClick: () {
-                                Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const ProfileName()));
+                                nextPage(
+                                    context: context,
+                                    screen: const ProfileName());
                               },
                               buttonName: "Start"),
                 ],

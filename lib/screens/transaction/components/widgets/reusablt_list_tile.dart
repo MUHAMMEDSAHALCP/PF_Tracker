@@ -1,7 +1,9 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
 import 'package:money_management/components/delete_popup.dart';
+import 'package:money_management/components/navigatior_push.dart';
 import 'package:money_management/model/category/category_model.dart';
 import 'package:money_management/model/transaction/transaction_model.dart';
 import 'package:money_management/screens/transaction/components/editing_screen.dart';
@@ -24,12 +26,9 @@ class ReusableListTile extends StatelessWidget {
           SlidableAction(
             foregroundColor: kGreenColor,
             onPressed: (context) {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      EditingScreen(transaactionDatas: newList),
-                ),
+              nextPage(
+                screen: EditingScreen(transaactionDatas: newList),
+                context: context,
               );
             },
             icon: Icons.edit,
@@ -57,12 +56,11 @@ class ReusableListTile extends StatelessWidget {
           ),
           child: GestureDetector(
             onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => FullTransactonDetails(
-                            datas: newList,
-                          )));
+              nextPage(
+                  context: context,
+                  screen: FullTransactonDetails(
+                    datas: newList,
+                  ));
             },
             child: Center(
               child: ListTile(
@@ -80,7 +78,7 @@ class ReusableListTile extends StatelessWidget {
                         borderRadius: BorderRadius.circular(5),
                       ),
                       child: Center(
-                        child: Text(
+                        child: AutoSizeText(
                           parsedWeek(newList.date),
                           style: const TextStyle(
                               color: Colors.white,
@@ -93,14 +91,14 @@ class ReusableListTile extends StatelessWidget {
                     const SizedBox(
                       height: 5,
                     ),
-                    Text(
+                    AutoSizeText(
                       parseDate(newList.date),
                       style: const TextStyle(
                           fontFamily: "FiraSansCondensed", fontSize: 14),
                     )
                   ],
                 ),
-                title: Text(
+                title: AutoSizeText(
                   newList.category != null
                       ? newList.category!.name
                       : newList.type == CategoryType.borrow
@@ -111,7 +109,7 @@ class ReusableListTile extends StatelessWidget {
                   style: kIntroTextStyle,
                   textAlign: TextAlign.center,
                 ),
-                subtitle: Text(
+                subtitle: AutoSizeText(
                     newList.notes.length > 10 ? " see more..." : newList.notes,
                     textAlign: TextAlign.center),
                 trailing: Text(
@@ -120,7 +118,8 @@ class ReusableListTile extends StatelessWidget {
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
                     fontFamily: 'FiraSansCondensed',
-                    color: newList.type == CategoryType.income
+                    color: newList.type == CategoryType.income ||
+                            newList.type == CategoryType.lend
                         ? kGreenColor
                         : kRedColor,
                   ),

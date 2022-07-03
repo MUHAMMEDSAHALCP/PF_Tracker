@@ -127,7 +127,7 @@ class _SettingScreenState extends State<SettingScreen> {
     final box = context.findRenderObject() as RenderBox?;
 
     Share.share(
-      'PF Tracker Easiest way to Track Your Finance install Now!!!',
+      'PF Tracker(Personal finance tracker) Easiest way to Track Your Finance!!! install Now -> \n https://play.google.com/store/apps/details?id=com.pf_tracker',
       subject: "Share App",
       sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
     );

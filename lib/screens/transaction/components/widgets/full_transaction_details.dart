@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:money_management/components/custom_appbar.dart';
+import 'package:money_management/components/navigatior_push.dart';
 import 'package:money_management/model/category/category_model.dart';
 import 'package:money_management/model/transaction/transaction_model.dart';
 import 'package:money_management/screens/transaction/components/editing_screen.dart';
@@ -27,12 +28,11 @@ class FullTransactonDetails extends StatelessWidget {
             title: "Transaction Details",
             subtitle: 'Now You Can See All Your Details.',
             onPress: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => EditingScreen(
-                            transaactionDatas: datas,
-                          )));
+              nextPage(
+                  context: context,
+                  screen: EditingScreen(
+                    transaactionDatas: datas,
+                  ));
             },
             // ignore: deprecated_member_use
             icon: const FaIcon(FontAwesomeIcons.edit),

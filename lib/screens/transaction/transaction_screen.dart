@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:money_management/components/custom_appbar.dart';
+import 'package:money_management/components/navigatior_push.dart';
 import 'package:money_management/data_base/category/category_db.dart';
 import 'package:money_management/data_base/transaction/transction.db.dart';
 import 'package:money_management/model/transaction/transaction_model.dart';
+import 'package:money_management/screens/category/income_categry_screen.dart';
 import 'package:money_management/screens/transaction/components/see_more_screen.dart';
 import 'package:money_management/screens/transaction/components/add_transaction_screen.dart';
 import 'package:money_management/screens/transaction/components/full_borrow_details_screen.dart';
@@ -88,11 +90,9 @@ class _TransactionPageState extends State<TransactionPage> {
                             style: kCardAmountStyleGreen,
                             height: _cardHeight,
                             onClick: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const FullIncomeList(),
-                                ),
+                              nextPage(
+                                screen: const FullIncomeList(),
+                                context: context,
                               );
                             },
                           ),
@@ -112,13 +112,9 @@ class _TransactionPageState extends State<TransactionPage> {
                             style: kCardAmountStyleRed,
                             height: _cardHeight,
                             onClick: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const FullExpenseDetails(),
-                                ),
-                              );
+                              nextPage(
+                                  context: context,
+                                  screen: const FullExpenseDetails());
                             },
                           ),
                         );
@@ -141,12 +137,9 @@ class _TransactionPageState extends State<TransactionPage> {
                             style: kCardAmountStyleRed,
                             height: _cardHeight,
                             onClick: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const FullBorrowDetails(),
-                                ),
+                              nextPage(
+                                screen: const FullBorrowDetails(),
+                                context: context,
                               );
                             },
                           ),
@@ -166,11 +159,9 @@ class _TransactionPageState extends State<TransactionPage> {
                             style: kCardAmountStyleGreen,
                             height: _cardHeight,
                             onClick: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const FullLendDetails(),
-                                ),
+                              nextPage(
+                                screen: const FullLendDetails(),
+                                context: context,
                               );
                             },
                           ),
@@ -198,12 +189,9 @@ class _TransactionPageState extends State<TransactionPage> {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      const AllCategoryScreen(),
-                                ),
+                              nextPage(
+                                screen: const AllCategoryScreen(),
+                                context: context,
                               );
                             },
                             child: Row(
@@ -274,7 +262,7 @@ class _TransactionPageState extends State<TransactionPage> {
         elevation: 8,
         backgroundColor: kSecondoryColor,
         onPressed: () {
-          Navigator.pushNamed(context, AddTransactionScreen.routeName);
+          nextPage(context: context, screen: const AddTransactionScreen());
         },
         child: const Icon(Icons.add),
         shape: BeveledRectangleBorder(

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:money_management/screens/home/home_screen.dart';
 import 'package:money_management/utils/constants.dart';
@@ -73,7 +74,7 @@ class _ProfileNameState extends State<ProfileName> {
                 },
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width / 3.6,
+                    horizontal: MediaQuery.of(context).size.width / 5,
                     vertical: 12,
                   ),
                   child: const Text(
@@ -99,7 +100,7 @@ class _ProfileNameState extends State<ProfileName> {
       return ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           backgroundColor: kSecondoryColor,
-          content: Text(
+          content: AutoSizeText(
             'Please enter your name!!!',
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             textAlign: TextAlign.center,

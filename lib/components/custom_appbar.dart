@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:money_management/utils/constants.dart';
@@ -25,7 +26,7 @@ class CustomAppBar extends StatelessWidget {
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20))),
         child: ListTile(
-            title: Text(
+            title: AutoSizeText(
               title,
               style: kIntroTextStyle,
             ),

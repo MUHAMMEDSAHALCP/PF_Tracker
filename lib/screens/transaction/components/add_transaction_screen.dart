@@ -71,7 +71,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                         height: MediaQuery.of(context).size.height / 20,
                         width: MediaQuery.of(context).size.width / 6.6,
                         child: const Center(
-                          child: Text(
+                          child: AutoSizeText(
                             "Income",
                             style: TextStyle(
                                 fontSize: 15,
@@ -99,7 +99,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                         height: MediaQuery.of(context).size.height / 20,
                         width: MediaQuery.of(context).size.width / 6.6,
                         child: const Center(
-                          child: Text(
+                          child: AutoSizeText(
                             "expense",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, color: kWhite),
@@ -124,7 +124,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                         height: MediaQuery.of(context).size.height / 20,
                         width: MediaQuery.of(context).size.width / 6.6,
                         child: const Center(
-                          child: Text(
+                          child: AutoSizeText(
                             "Lend",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, color: kWhite),
@@ -151,7 +151,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                         height: MediaQuery.of(context).size.height / 20,
                         width: MediaQuery.of(context).size.width / 6.6,
                         child: const Center(
-                          child: Text(
+                          child: AutoSizeText(
                             "Borrow",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, color: kWhite),
@@ -182,7 +182,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
               children: [
                 Padding(
                   padding:
-                      const EdgeInsets.only(left: 25, right: 25, bottom: 10),
+                      const EdgeInsets.only(left: 20, right: 20, bottom: 10),
                   child: Column(
                     children: [
                       Card(
@@ -248,56 +248,51 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                               padding: kTextFieldPadding,
                               decoration: kTextFieldBoxDecoration,
                               child: Row(children: [
-                                const Text("Category :  ",
+                                const AutoSizeText("Category :  ",
                                     style: kTextFieldTextStyle),
                                 Expanded(
-                                    child: Padding(
-                                  padding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width /
-                                          17.5),
-                                  child: Row(
-                                    children: [
-                                      Center(
-                                          child: DropdownButton(
-                                              value: _categotyID,
-                                              hint: const AutoSizeText(
-                                                  "Select Category"),
-                                              items: (_selectedCategoryType ==
-                                                          CategoryType.income
-                                                      ? CategoryDB
-                                                          .instance
-                                                          .incomeCategoryListListener
-                                                          .value
-                                                      : CategoryDB
-                                                          .instance
-                                                          .expenseCategoryListLListener
-                                                          .value)
-                                                  .map((e) {
-                                                return DropdownMenuItem(
-                                                  child: AutoSizeText(e.name),
-                                                  value: e.id,
-                                                  onTap: () {
-                                                    _selectedCategoryModel = e;
-                                                  },
-                                                );
-                                              }).toList(),
-                                              onChanged:
-                                                  (String? selectedValue) {
-                                                setState(() {
-                                                  _categotyID = selectedValue;
-                                                });
-                                              })),
-                                      GestureDetector(
-                                          onTap: () {
-                                            showCategoryAddPopUp(
-                                                context, _selectedCategoryType);
-                                          },
-                                          child: const Icon(
-                                            Icons.add,
-                                            color: kSecondoryColor,
-                                          )),
-                                    ],
-                                  ),
+                                    child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Flexible(
+                                      child: DropdownButton(
+                                          value: _categotyID,
+                                          hint: const Text("Select Category"),
+                                          items: (_selectedCategoryType ==
+                                                      CategoryType.income
+                                                  ? CategoryDB
+                                                      .instance
+                                                      .incomeCategoryListListener
+                                                      .value
+                                                  : CategoryDB
+                                                      .instance
+                                                      .expenseCategoryListLListener
+                                                      .value)
+                                              .map((e) {
+                                            return DropdownMenuItem(
+                                              child: AutoSizeText(e.name),
+                                              value: e.id,
+                                              onTap: () {
+                                                _selectedCategoryModel = e;
+                                              },
+                                            );
+                                          }).toList(),
+                                          onChanged: (String? selectedValue) {
+                                            setState(() {
+                                              _categotyID = selectedValue;
+                                            });
+                                          }),
+                                    ),
+                                    GestureDetector(
+                                        onTap: () {
+                                          showCategoryAddPopUp(
+                                              context, _selectedCategoryType);
+                                        },
+                                        child: const Icon(
+                                          Icons.add,
+                                          color: kSecondoryColor,
+                                        )),
+                                  ],
                                 ))
                               ])),
                         ),
